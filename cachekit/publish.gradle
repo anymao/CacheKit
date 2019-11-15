@@ -1,0 +1,53 @@
+apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'maven'
+apply from: "../version.gradle"
+
+// type显示指定任务类型或任务, 这里指定要执行Javadoc这个task,这个task在gradle中已经定义
+task androidJavadocs(type: Javadoc) {
+    // 设置源码所在的位置
+    source = android.sourceSets.main.java.sourceFiles
+}
+
+// 生成javadoc.jar
+task androidJavadocsJar(type: Jar) {
+    // 指定文档名称
+    archiveClassifier.set('javadoc')
+    from androidJavadocs.destinationDir
+}
+
+// 生成sources.jar
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from android.sourceSets.main.java.sourceFiles
+}
+
+// 产生相关配置文件的任务
+artifacts {
+    archives androidSourcesJar
+    archives androidJavadocsJar
+}
+
+//发布到jcenter
+publish {
+    userOrg = 'anymore0503'
+    groupId = rootProject.ext.cachekitGroupId
+    artifactId = rootProject.ext.cachekitArtifactId
+    publishVersion = rootProject.ext.cachekitVersionName
+    desc = '一个Android双缓存组件库'
+    website = 'https://github.com/anymao/CacheKit'
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            // 本地仓库路径
+            repository(url: 'file://D://GithubMaven')
+            // 唯一标识
+            pom.groupId = rootProject.ext.cachekitGroupId
+            // 项目名称
+            pom.artifactId = rootProject.ext.cachekitArtifactId
+            // 版本号
+            pom.version = rootProject.ext.cachekitVersionName
+        }
+    }
+}

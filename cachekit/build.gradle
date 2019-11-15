@@ -70,7 +70,7 @@ uploadArchives {
             // 本地仓库路径
             repository(url: 'file://D://GithubMaven')
             // 唯一标识
-            pom.groupId = "com.anymore"
+            pom.groupId = "com.github.anymao"
             // 项目名称
             pom.artifactId = "cachekit"
             // 版本号

@@ -19,7 +19,6 @@ internal class ConverterRegistry {
      */
     init {
         mConverters.add(BitmapConverter)
-        mConverters.add(DrawableConverter)
         mConverters.add(JSONObjectConverter)
         mConverters.add(JSONArrayConverter)
     }

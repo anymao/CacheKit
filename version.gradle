@@ -1,0 +1,12 @@
+ext{
+    //组件库sdk编译版本相关
+    compileSdkVersion=29
+    buildToolsVersion="29.0.0"
+    minSdkVersion=19
+    targetSdkVersion=29
+
+
+    //组件发布版本号相关
+    cachekitVersionCode=100
+    cachekitVersionName="1.0.0"
+}

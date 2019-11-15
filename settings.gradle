@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':cachekit'
 rootProject.name='CacheKit'

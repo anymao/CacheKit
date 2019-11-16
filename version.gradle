@@ -7,7 +7,7 @@ ext{
 
 
     //组件发布版本号相关
-    cachekitGroupId="com.github.anymao"
+    cachekitGroupId="com.anymore"
     cachekitArtifactId="cachekit"
     cachekitVersionCode=100
     cachekitVersionName="1.0.0"

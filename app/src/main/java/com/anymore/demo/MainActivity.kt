@@ -48,8 +48,8 @@ class MainActivity : AppCompatActivity() {
             Timber.d("存储double成功！")
         }
         btnGetDouble.setOnClickListener {
-            val value = mDataCache.getFromDisk<Double>("double")
-            tvResult.append("double=$value \n")
+            val doubleValue = mDataCache.getFromDisk<Double>("double")
+            tvResult.append("double=$doubleValue \n")
         }
 
         btnSaveBitmap.setOnClickListener {
@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity() {
 
         btnGetJSONArray.setOnClickListener {
             Maybe.create<JSONArray> {
-                val jsonArray = mDataCache.getFromDisk<JSONArray>("jsonArray")
+                val jsonArray = mDataCache.get<JSONArray>("jsonArray")
                 if (jsonArray != null){
                     it.onSuccess(jsonArray)
                 }
@@ -124,7 +124,6 @@ class MainActivity : AppCompatActivity() {
                         tvResult.append("$it \n")
                     },
                     onComplete = {
-                        ivResult.setImageDrawable(null)
                         Timber.d("jsonArray 已经过期!")
                         Toast.makeText(this,"jsonArray 已经过期!",Toast.LENGTH_LONG).show()
                     }
